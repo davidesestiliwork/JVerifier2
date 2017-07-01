@@ -24,10 +24,10 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStreamReader;
 import it.dsestili.jhashcode.core.Core;
+import it.dsestili.jhashcode.core.Utils;
 
 public class JVerifier 
 {
-
 	public static void main(String[] args) 
 	{
 		if(args.length == 2)
@@ -42,6 +42,8 @@ public class JVerifier
 	
 	private void verify(String param1, String param2)
 	{
+		long start = System.currentTimeMillis();
+		
 		File file = new File(param1);
 		
 		if(!file.exists())
@@ -131,6 +133,7 @@ public class JVerifier
 			e.printStackTrace();
 		}
 		
+		long elapsed = System.currentTimeMillis() - start;
+		System.out.println("Elapsed time: " + Utils.getElapsedTime(elapsed, true));
 	}
-	
 }
