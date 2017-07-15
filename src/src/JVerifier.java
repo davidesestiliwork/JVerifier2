@@ -58,6 +58,20 @@ public class JVerifier
 			return;
 		}
 		
+		File baseDir = new File(param3);
+		
+		if(!baseDir.exists())
+		{
+			System.out.println("baseDir does not exist");
+			return;
+		}
+		
+		if(baseDir.isFile())
+		{
+			System.out.println("baseDir is a file");
+			return;
+		}
+		
 		try 
 		{
 			FileInputStream fis = new FileInputStream(file);
