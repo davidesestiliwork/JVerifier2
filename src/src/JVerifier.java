@@ -30,17 +30,17 @@ public class JVerifier
 {
 	public static void main(String[] args) 
 	{
-		if(args.length == 2)
+		if(args.length == 3)
 		{
-			new JVerifier().verify(args[0], args[1]);
+			new JVerifier().verify(args[0], args[1], args[2]);
 		}
 		else
 		{
-			System.out.println("Usage: param 1: file name, param 2: algorithm");
+			System.out.println("Usage: param 1: file name, param 2: algorithm, param 3: baseDir");
 		}
 	}
 	
-	private void verify(String param1, String param2)
+	private void verify(String param1, String param2, String param3)
 	{
 		long start = System.currentTimeMillis();
 		
@@ -100,7 +100,7 @@ public class JVerifier
 
 					String fileName = fileNameStringBuilder.toString();
 					
-					currentFile = new File(fileName);
+					currentFile = new File(param3 + fileName);
 					
 					Core core = new Core(currentFile, param2);
 					String generatedHash = core.generateHash();
