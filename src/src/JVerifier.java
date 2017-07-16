@@ -1,7 +1,7 @@
 package src;
 
 /*
-JVerifier an hash code verifier
+JVerifier2 an hash code verifier
 Copyright (C) 2017 Davide Sestili
 
 This program is free software: you can redistribute it and/or modify
