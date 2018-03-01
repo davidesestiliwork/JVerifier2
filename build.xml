@@ -9,7 +9,7 @@
     <target name="create_run_jar">
         <jar destfile="${dir.workspace}/JVerifier2.jar" filesetmanifest="mergewithoutmain">
             <manifest>
-                <attribute name="Main-Class" value="src.JVerifier"/>
+                <attribute name="Main-Class" value="it.dsestili.jverifier.JVerifier"/>
                 <attribute name="Class-Path" value="."/>
             </manifest>
             <fileset dir="${dir.buildfile}/bin"/>
