@@ -134,7 +134,7 @@ public class JVerifier
 				}
 				catch(FileNotFoundException e)
 				{
-					System.out.println(currentFile.getAbsolutePath() + " not found");
+					System.out.println(" not found");
 					notFoundCount++;
 				}
 			}
