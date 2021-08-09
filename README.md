@@ -8,3 +8,4 @@ New in release 2:
 
 - Use relative path instead of absolute path
 - Show elapsed time
+- Can verify signature automatically

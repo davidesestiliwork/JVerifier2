@@ -149,5 +149,34 @@ public class JVerifier
 		
 		long elapsed = System.currentTimeMillis() - start;
 		System.out.println("Elapsed time: " + Utils.getElapsedTime(elapsed, true));
+
+		File signature = new File(file.getAbsolutePath() + ".asc");
+		if(signature.exists())
+		{
+			try
+			{
+				checkSign(signature);
+			}
+			catch(Throwable t)
+			{
+				t.printStackTrace();
+			}
+		}
+	}
+	
+	private void checkSign(File file) throws Throwable
+	{
+		System.out.print(file.getAbsolutePath());
+		ProcessBuilder builder = new ProcessBuilder("gpg", "--verify", file.getAbsolutePath());
+		Process process = builder.start();
+		int exitCode = process.waitFor();
+		if(exitCode == 0)
+		{
+			System.out.println(" Good signature");
+		}
+		else
+		{
+			System.out.println(" BAD Signature");
+		}
 	}
 }
