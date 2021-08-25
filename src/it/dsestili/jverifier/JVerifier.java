@@ -150,17 +150,34 @@ public class JVerifier
 		long elapsed = System.currentTimeMillis() - start;
 		System.out.println("Elapsed time: " + Utils.getElapsedTime(elapsed, true));
 
-		File signature = new File(file.getAbsolutePath() + ".asc");
-		if(signature.exists())
+		File ascSignatureLowerCase = new File(file.getAbsolutePath() + ".asc");
+		File gpgSignatureLowerCase = new File(file.getAbsolutePath() + ".gpg");
+		
+		if(ascSignatureLowerCase.exists())
 		{
 			try
 			{
-				checkSign(signature);
+				checkSign(ascSignatureLowerCase);
 			}
 			catch(Throwable t)
 			{
 				t.printStackTrace();
 			}
+		}
+		else if(gpgSignatureLowerCase.exists())
+		{
+			try
+			{
+				checkSign(gpgSignatureLowerCase);
+			}
+			catch(Throwable t)
+			{
+				t.printStackTrace();
+			}
+		}
+		else
+		{
+			System.out.println("Signature missing");
 		}
 	}
 	
