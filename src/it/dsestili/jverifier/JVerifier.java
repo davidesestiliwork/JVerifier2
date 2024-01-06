@@ -78,7 +78,7 @@ public class JVerifier
 			InputStreamReader isr = new InputStreamReader(fis);
 			BufferedReader reader = new BufferedReader(isr);
 			
-			int okCount = 0, doesNotMatchCount = 0, notFoundCount = 0;
+			int okCount = 0, doesNotMatchCount = 0, notFoundCount = 0, errorCount = 0;
 
 			File currentFile = null;
 			
@@ -137,10 +137,15 @@ public class JVerifier
 					System.out.println(" not found");
 					notFoundCount++;
 				}
+				catch(Throwable e)
+				{
+					System.out.println(" error");
+					errorCount++;
+				}
 			}
 			
 			reader.close();
-			System.out.println("OK: " + okCount + " - Does not match: " + doesNotMatchCount + " - Not found: " + notFoundCount);
+			System.out.println("OK: " + okCount + " - Does not match: " + doesNotMatchCount + " - Not found: " + notFoundCount + " - Errors: " + errorCount);
 		} 
 		catch(Throwable e)
 		{
